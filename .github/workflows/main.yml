@@ -6,6 +6,7 @@ on:
     branches:
       - main
       - release/*
+  workflow_dispatch:
 
 # On PRs, "head_ref" is defined and is consistent across updates. On
 # pushes, it's not defined, so we use "run_id", which is unique across
@@ -24,7 +25,7 @@ jobs:
   build_and_test:
     name: Build and Test
     timeout-minutes: 20
-    runs-on: macos-15-xlarge
+    runs-on: namespace-profile-macos-xxl
     env:
       FASTLANE_XCODEBUILD_SETTINGS_RETRIES: 7
 
@@ -80,7 +81,7 @@ jobs:
 
     timeout-minutes: 10
 
-    runs-on: macos-15
+    runs-on: namespace-profile-macos-xxl
 
     if: github.event_name == 'pull_request'
 
@@ -98,7 +99,7 @@ jobs:
 
     timeout-minutes: 5
 
-    runs-on: macos-15
+    runs-on: namespace-profile-macos-xxl
 
     if: github.event_name == 'pull_request'
 
